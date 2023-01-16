@@ -85,9 +85,12 @@
 	</main>
 
 
-	<footer>
-		&copy; Jo's Jobs 2017
-	</footer>
+	<?php
+
+require ('foot.php');
+
+
+?>
 </body>
 </html>
 
