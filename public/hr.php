@@ -38,7 +38,7 @@
 	<section class="left">
 		<ul>
 			<?php
-			require ("categorylinks.php");
+			require "categorylinks.php";
 			?>
 		</ul>
 	</section>
@@ -87,7 +87,7 @@
 
 	<?php
 
-require ('foot.php');
+require 'foot.php';
 
 
 ?>

@@ -138,7 +138,7 @@ session_start();
 
 	<?php
 
-require ('foot.php');
+require 'foot.php';
 
 
 ?>

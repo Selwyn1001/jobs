@@ -77,7 +77,7 @@
 <h2>Select the type of job you are looking for:</h2>
 		<ul>
 		<?php
-			require ("categorylinks.php");
+			require "categorylinks.php";
 			?>
 
 				</ul>
@@ -90,7 +90,7 @@
 </html>
 <?php
 
-require ('foot.php');
+require 'foot.php';
 
 
 ?>
