@@ -1,6 +1,6 @@
 <?php
 $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
-session_start();
+
 
 					$sql = "SELECT * from category";
 					if($result = $pdo->query($sql)){ 
