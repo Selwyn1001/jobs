@@ -18,19 +18,12 @@
 		</section>
 	</header>
 	<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li>Jobs
-				<ul>
-                <?php
+		
+            <?php
 			require "menulinks.php";
 			?>
 
-				</ul>
-			</li>
-			<li><a href="/about.html">About Us</a></li>
-		</ul>
-
+				
 	</nav>
 <img src="images/randombanner.php"/>
 	<main class="home">

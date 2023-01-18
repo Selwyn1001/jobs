@@ -19,7 +19,7 @@
 	</header>
 	<nav>
 		<?php 
-		require"menulinks.php";
+		require "categorylinks.php";
 		?>
 	</nav>
 	<img src="images/randombanner.php"/>
@@ -28,7 +28,7 @@
 	<section class="left">
 		<ul>
 		<?php 
-		require"categorylinks.php";
+		require "categorylinks.php";
 		?>
 		</ul>
 	</section>
