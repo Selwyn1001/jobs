@@ -37,9 +37,10 @@
 
 	<section class="left">
 		<ul>
-			<li><a href="it.php">IT</a></li>
-			<li><a href="hr.php">Human Resources</a></li>
-			<li class="current"><a href="sales.php">Sales</a></li>
+		<?php
+			require ("categorylinks.php");
+			?>
+
 		</ul>
 	</section>
 

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="/styles.css"/>
-		<title>Jo's Jobs - Home</title>
+		<title>Jo's Jobs - About</title>
 	</head>
 	<body>
 	<header>
@@ -22,13 +22,13 @@
 			<li><a href="/">Home</a></li>
 			<li>Jobs
 				<ul>
-				<?php
-			require ("categorylinks.php");
+                <?php
+			require ("menulinks.php");
 			?>
 
 				</ul>
 			</li>
-			<li><a href="/about.php">About Us</a></li>
+			<li><a href="/about.html">About Us</a></li>
 		</ul>
 
 	</nav>
@@ -38,7 +38,7 @@
 
 		<h2>Select the type of job you are looking for:</h2>
 		<ul>
-		<?php
+			<?php
 			require ("categorylinks.php");
 			?>
 
@@ -47,12 +47,12 @@
 
 	</main>
 
-
 	<?php
 
-require ('foot.php');
-
-
-?>
+	require ('foot.php');
+	
+	
+	?>
+	
 </body>
 </html>

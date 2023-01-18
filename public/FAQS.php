@@ -76,9 +76,9 @@
 
 <h2>Select the type of job you are looking for:</h2>
 		<ul>
-					<li><a href="it.php">IT</a></li>
-					<li><a href="hr.php">Human Resources</a></li>
-					<li><a href="sales.php">Sales</a></li>
+		<?php
+			require ("categorylinks.php");
+			?>
 
 				</ul>
 			</li>

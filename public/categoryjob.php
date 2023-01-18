@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="/styles.css"/>
-		<title>Jo's Jobs - Human Resources</title>
+		<title>Jo's Jobs - Jobs</title>
 	</head>
 	<body>
 	<header>
@@ -18,41 +18,43 @@
 		</section>
 	</header>
 	<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li>Jobs
-				<ul>
-					<li><a href="it.php">IT</a></li>
-					<li><a href="hr.php">Human Resources</a></li>
-					<li><a href="sales.php">Sales</a></li>
-
-				</ul>
-			</li>
-			<li><a href="/about.html">About Us</a></li>
-		</ul>
-
+		<?php 
+		require("menulinks.php");
+		?>
 	</nav>
 	<img src="images/randombanner.php"/>
 	<main class="sidebar">
 
 	<section class="left">
 		<ul>
-			<?php
-			require ("categorylinks.php");
-			?>
+		<?php 
+		require("categorylinks.php");
+		?>
 		</ul>
 	</section>
 
 	<section class="right">
 
-	<h1>Human Resources Jobs</h1>
+		<h1>IT Jobs</h1>
 
 	<ul class="listing">
 
 
 	<?php
+	$cat_id=0;
+
+	if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
+	{
+		$cat_id = trim($_GET["id"]);
+	}
+
 	$pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
-	$stmt = $pdo->prepare('SELECT * FROM job WHERE categoryId = 2 AND closingDate > :date');
+	if ($cat_id>0){
+		$stmt = $pdo->prepare('SELECT * FROM job WHERE categoryId = '.$cat_id.' AND closingDate > :date');
+	}
+	else{
+		$stmt = $pdo->prepare('SELECT * FROM job WHERE closingDate > :date');
+	}
 
 	$date = new DateTime();
 
@@ -71,7 +73,7 @@
 		echo '<h3>' . $job['salary'] . '</h3>';
 		echo '<p>' . nl2br($job['description']) . '</p>';
 
-		echo '<a class="more" href="/apply.php?id=' . $job['id'] . '">Apply for this job</a>';
+		echo '<a class="more" href="/jobs/public/apply.php?id=' . $job['id'] . '">Apply for this job</a>';
 
 		echo '</div>';
 		echo '</li>';
@@ -86,11 +88,7 @@
 
 
 	<?php
-
-require ('foot.php');
-
-
+require ("foot.php");
 ?>
 </body>
 </html>
-
