@@ -91,10 +91,28 @@ session_start();
 				echo '</tr>';
 			}
 
-			echo '</thead>';
+			echo '</tbody>';
 			echo '</table>';
 
 		}
+
+			if ($disabled==1){
+				echo '<td><form method="post" action="unarchjob.php">
+				<input type="hidden" name="id" value="' . $job['id'] . '" />
+				<input type="submit" name="submit" value="Unarchive" />
+				</form></td>';
+				
+
+			}
+			else {
+
+				echo '<td><form method="post" action="archjob.php">
+				<input type="hidden" name="id" value="' . $job['id'] . '" />
+				<input type="submit" name="submit" value="Unarchive" />
+				</form></td>';
+
+			}
+
 
 		else {
 			?>
@@ -113,9 +131,10 @@ session_start();
 </section>
 	</main>
 
-	<footer>
-		&copy; Jo's Jobs 2017
-	</footer>
+	<?php
+	require "footer.php";
+	?>
+
 </body>
 </html>
 
