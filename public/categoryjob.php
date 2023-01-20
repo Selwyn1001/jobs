@@ -25,13 +25,6 @@
 	<img src="images/randombanner.php"/>
 	<main class="sidebar">
 
-	<section class="left">
-		<ul>
-		<?php 
-		require "categorylinks.php";
-		?>
-		</ul>
-	</section>
 
 	<section class="right">
 
@@ -39,8 +32,14 @@
 
 	<ul class="listing">
 
-
 	<?php
+
+	$locationSearch="";
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+	$locationSearch = trim($_POST["location"]);
+	}
+	
 	$cat_id=0;
 
 	if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
@@ -48,13 +47,32 @@
 		$cat_id = trim($_GET["id"]);
 	}
 
+	?>
+
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+		<input type = "hidden" name = "id" value = "<?php echo $cat_id; ?>">
+		<label>Location</label>
+		<input type="text" name="location" class="form-control" value="<?php echo $locationSearch; ?>">
+		<input type="submit" class="btn btn-primary" value="Submit">
+		</form>
+
+		<?php
+
 	$pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
+	$q = 'SELECT * FROM job WHERE (dis is NULL or dis = 0) AND closingDate > :date';
 	if ($cat_id>0){
-		$stmt = $pdo->prepare('SELECT * FROM job WHERE categoryId = '.$cat_id.' AND closingDate > :date');
+		$q = $q.' AND categoryid = '.$cat_id;
 	}
+
+	if (!isset($locationSearch)	 || empty($locationSearch)	||	is_null($locationSearch)){
+		//If the location search is null then do nothing
+	}	
+
 	else{
-		$stmt = $pdo->prepare('SELECT * FROM job WHERE closingDate > :date');
+		$q= $q. "AND location like '" .$locationSearch."'";
 	}
+
+	$stmt = $pdo->prepare($q);
 
 	$date = new DateTime();
 

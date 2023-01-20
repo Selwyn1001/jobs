@@ -4,7 +4,7 @@ $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 <ul>
 			
 			<li><a href="/jobs/public/admin/index.php">Home</a></li>
-			<li>Jobs
+			<li><a href="/jobs/public/admin/jobs.php">Jobs</a></li>
 				<ul>
 					
 				<?php

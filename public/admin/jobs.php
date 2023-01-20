@@ -39,7 +39,7 @@ session_start();
 	</header>
 	<nav>
 		<?php
-				require 'menulinks.php'
+			require 'menulinks.php'
 		?>
 	</nav>
 

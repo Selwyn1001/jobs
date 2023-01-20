@@ -29,11 +29,15 @@ $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 </ul>
 
 <ul>
+
+	<li>Admin
+
+<ul>
 	<li><a href="/jobs/public/admin/jobs.php">Jobs</a></li>
 	<li><a href="/jobs/public/admin/categories.php">Categories</a></li>
-<ul>
+			
+</ul>
+			</li>
 	
 
 </ul>
-<li>
-<li>
