@@ -7,8 +7,24 @@ session_start();
 	<head>
 		<link rel="stylesheet" href="/styles.css"/>
 		<title>Jo's Jobs - Job list</title>
-	</head>
-	<body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	
+	     	integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+			 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<link rel="stylesheet" type="text/css"
+		href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
+		<script type="text/javascript" charset="utf8"
+		
+		src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+		</head>
+		<body>
+	<script type="text/javascript">
+	$(document).ready( function () {
+    $('#jobtable').DataTable();
+} );
+</script>
+
 	<header>
 		<section>
 			<aside>
@@ -22,19 +38,11 @@ session_start();
 		</section>
 	</header>
 	<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li>Jobs
-				<ul>
-					<li><a href="/it.php">IT</a></li>
-					<li><a href="/hr.php">Human Resources</a></li>
-					<li><a href="/sales.php">Sales</a></li>
-				</ul>
-			</li>
-			<li><a href="/about.html">About Us</a></li>
-		</ul>
-
+		<?php
+				require 'menulinks.php'
+		?>
 	</nav>
+
 	<img src="/images/randombanner.php"/>
 	<main class="sidebar">
 
@@ -59,16 +67,21 @@ session_start();
 			<a class="new" href="addjob.php">Add new job</a>
 
 			<?php
-			echo '<table>';
+			echo '<table id="jobtable">';
 			echo '<thead>';
 			echo '<tr>';
+			echo '<th>No</th>';
 			echo '<th>Title</th>';
 			echo '<th style="width: 15%">Salary</th>';
+			echo '<th style="width: 15%">Category name</th>';
 			echo '<th style="width: 5%">&nbsp;</th>';
 			echo '<th style="width: 15%">&nbsp;</th>';
 			echo '<th style="width: 5%">&nbsp;</th>';
 			echo '<th style="width: 5%">&nbsp;</th>';
 			echo '</tr>';
+			echo '</thead>';
+			echo '<tbody>';
+			$stmt = $pdo->query('select job.*, Category.name from job inner join category on job.categoryId = category.id');
 
 			$stmt = $pdo->query('SELECT * FROM job');
 
@@ -78,42 +91,46 @@ session_start();
 				$applicants->execute(['jobId' => $job['id']]);
 
 				$applicantCount = $applicants->fetch();
-
+				
+				$disabled=$job['dis'];
 				echo '<tr>';
+				echo '<td>' . $job['id'] . '</td>';
 				echo '<td>' . $job['title'] . '</td>';
 				echo '<td>' . $job['salary'] . '</td>';
+				echo '<td>' . $job['name'] . '</td>';
 				echo '<td><a style="float: right" href="editjob.php?id=' . $job['id'] . '">Edit</a></td>';
 				echo '<td><a style="float: right" href="applicants.php?id=' . $job['id'] . '">View applicants (' . $applicantCount['count'] . ')</a></td>';
 				echo '<td><form method="post" action="deletejob.php">
 				<input type="hidden" name="id" value="' . $job['id'] . '" />
 				<input type="submit" name="submit" value="Delete" />
 				</form></td>';
-				echo '</tr>';
-			}
-
-			echo '</tbody>';
-			echo '</table>';
-
-		}
+			
 
 			if ($disabled==1){
-				echo '<td><form method="post" action="unarchjob.php">
+					echo '<td><form method="post" action="unarchjob.php">
 				<input type="hidden" name="id" value="' . $job['id'] . '" />
 				<input type="submit" name="submit" value="Unarchive" />
 				</form></td>';
-				
-
-			}
+				}
 			else {
 
 				echo '<td><form method="post" action="archjob.php">
 				<input type="hidden" name="id" value="' . $job['id'] . '" />
-				<input type="submit" name="submit" value="Unarchive" />
+				<input type="submit" name="submit" value="Archive" />
 				</form></td>';
+			}	
 
-			}
+			
+			echo '</tr>';
 
+		}
 
+			echo '</tbody>';
+            echo '</table>';
+
+	}
+
+	
 		else {
 			?>
 			<h2>Log in</h2>
@@ -130,9 +147,9 @@ session_start();
 
 </section>
 	</main>
-
+	
 	<?php
-	require "footer.php";
+	require "foot.php";
 	?>
 
 </body>

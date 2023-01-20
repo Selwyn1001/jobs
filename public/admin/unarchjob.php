@@ -7,7 +7,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
     $jobid=$_POST['id'];
 
-    $stmt = $pdo->prepare('UPDATE job SET isDisabled= 0 WHERE id ='.$jobid);
+    $stmt = $pdo->prepare('UPDATE job SET dis= 0 WHERE id ='.$jobid);
 
     $stmt->execute();
 
