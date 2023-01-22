@@ -1,10 +1,12 @@
 <?php
 $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 ?>
+<!DOCTYPE HTML>
+<html>
 <ul>
 			
 			<li><a href="/jobs/public/admin/index.php">Home</a></li>
-			<li><a href="/jobs/public/admin/jobs.php">Jobs</a></li>
+			<li>Jobs
 				<ul>
 					
 				<?php
@@ -18,3 +20,12 @@ $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 					}
 				}
 					?>
+
+			</ul>
+			</li>
+
+				<li>a href="/jobs/public/about.php">About Us</a></li>
+				<li>a href="/jobs/public/FAQS.php">FAQS</a></li>
+
+			</ul>
+			</html>

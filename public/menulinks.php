@@ -3,7 +3,7 @@ $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 ?>
 <ul>
 			
-			<li><a href="/jobs/public/admin/index.php">Home</a></li>
+			<li><a href="/jobs/public/index.php">Home</a></li>
 			<li>Jobs
 				<ul>
 					
@@ -13,7 +13,7 @@ $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 						if($result->rowCount() > 0){
 
 							while($row = $result->fetch()){
-								echo '<li><a href="/jobs/public/categoryjob.php?id=' . $row['id'] . '">'.$row['name'] .'</a></li>';
+								echo '<li><a href="categoryjob.php?id=' . $row['id'] . '">'.$row['name'] .'</a></li>';
 							}
 					}
 				}
