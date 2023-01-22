@@ -74,14 +74,7 @@
   </div>
 </div>
 
-<h2>Select the type of job you are looking for:</h2>
-		<ul>
-		<?php
-			require "categorylinks.php";
-			?>
 
-				</ul>
-			</li>
 
 	</main>
 

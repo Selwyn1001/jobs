@@ -37,7 +37,7 @@
 	$locationSearch="";
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-	$locationSearch = trim($_POST["location"]);
+		$locationSearch = trim($_POST["location"]);
 	}
 	
 	$cat_id=0;

@@ -7,10 +7,7 @@ session_start();
 	<head>
 		<link rel="stylesheet" href="/styles.css"/>
 		<title>Jo's Jobs - Job list</title>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-	
-	     	integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-			 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<link rel="stylesheet" type="text/css"
 		href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 
@@ -25,34 +22,17 @@ session_start();
 } );
 </script>
 
-	<header>
-		<section>
-			<aside>
-				<h3>Office Hours:</h3>
-				<p>Mon-Fri: 09:00-17:30</p>
-				<p>Sat: 09:00-17:00</p>
-				<p>Sun: Closed</p>
-			</aside>
-			<h1>Jo's Jobs</h1>
-
-		</section>
-	</header>
-	<nav>
+	
+	
 		<?php
 			require 'menulinks.php'
 		?>
-	</nav>
+	
 
 	<img src="/images/randombanner.php"/>
 	<main class="sidebar">
 
-	<section class="left">
-		<ul>
-			<li><a href="jobs.php">Jobs</a></li>
-			<li><a href="categories.php">Categories</a></li>
-
-		</ul>
-	</section>
+	
 
 	<section class="right">
 
@@ -83,8 +63,7 @@ session_start();
 			echo '<tbody>';
 			$stmt = $pdo->query('select job.*, Category.name from job inner join category on job.categoryId = category.id');
 
-			$stmt = $pdo->query('SELECT * FROM job');
-
+			
 			foreach ($stmt as $job) {
 				$applicants = $pdo->prepare('SELECT count(*) as count FROM applicants WHERE jobId = :jobId');
 
@@ -93,6 +72,8 @@ session_start();
 				$applicantCount = $applicants->fetch();
 				
 				$disabled=$job['dis'];
+
+
 				echo '<tr>';
 				echo '<td>' . $job['id'] . '</td>';
 				echo '<td>' . $job['title'] . '</td>';
@@ -112,6 +93,7 @@ session_start();
 				<input type="submit" name="submit" value="Unarchive" />
 				</form></td>';
 				}
+
 			else {
 
 				echo '<td><form method="post" action="archjob.php">
