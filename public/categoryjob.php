@@ -59,7 +59,7 @@
 		<?php
 
 	$pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
-	$q = 'SELECT * FROM job WHERE (dis is NULL or dis = 0) AND closingDate > :date';
+	$q = 'SELECT * FROM job WHERE (notDis is NULL or notDis = 0) AND closingDate > :date';
 	if ($cat_id>0){
 		$q = $q.' AND categoryid = '.$cat_id;
 	}

@@ -71,7 +71,7 @@ session_start();
 
 				$applicantCount = $applicants->fetch();
 				
-				$disabled=$job['dis'];
+				$disabled=$job['notDis'];
 
 
 				echo '<tr>';
