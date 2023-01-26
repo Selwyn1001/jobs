@@ -1,6 +1,5 @@
 <?php
-$pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
-session_start();
+include($_SERVER['DOCUMENT_ROOT'].'/admin/connect.php');
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
@@ -11,4 +10,4 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 	header('location: categories.php');
 }
 
-
+?>
