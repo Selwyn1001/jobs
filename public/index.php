@@ -6,30 +6,14 @@
 	</head>
 	<body>
 	<header>
-		<section>
-			<aside>
-				<h3>Office Hours:</h3>
-				<p>Mon-Fri: 09:00-17:30</p>
-				<p>Sat: 09:00-17:00</p>
-				<p>Sun: Closed</p>
-			</aside>
-			<h1>Jo's Jobs</h1>
-
-		</section>
+		<?php
+	require ("section.php")
+		?>
 	</header>
 	<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li>Jobs
-				<ul>
-				<?php
-			require "categorylinks.php";
-			?>
-
-				</ul>
-			</li>
-			<li><a href="/about.php">About Us</a></li>
-		</ul>
+		<?php
+		require ("menulinks.php")
+		?>
 
 	</nav>
 <img src="images/randombanner.php"/>

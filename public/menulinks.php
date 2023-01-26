@@ -1,6 +1,8 @@
 <?php
 $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 ?>
+
+
 <ul>
 			
 			<li><a href="index.php">Home</a></li>
