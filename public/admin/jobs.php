@@ -61,7 +61,7 @@ session_start();
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
-			$stmt = $pdo->query('select job.*, Category.name from job inner join category on job.categoryId = category.id');
+			$stmt = $pdo->query('select job.*, category.name from job inner join category on job.categoryId = category.id');
 
 			
 			foreach ($stmt as $job) {
@@ -71,7 +71,7 @@ session_start();
 
 				$applicantCount = $applicants->fetch();
 				
-				$disabled=$job['notDis'];
+				$disabled=$job['dis'];
 
 
 				echo '<tr>';

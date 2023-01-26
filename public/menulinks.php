@@ -3,7 +3,7 @@ $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 ?>
 <ul>
 			
-			<li><a href="/jobs/public/index.php">Home</a></li>
+			<li><a href="index.php">Home</a></li>
 			<li>Jobs
 				<ul>
 					
@@ -24,8 +24,8 @@ $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 </ul>
 
 </li>
-	<li><a href="/jobs/public/about.php">About</a></li>
-	<li><a href="/jobs/public/FAQS.php">FAQS</a></li>
+	<li><a href="about.php">About</a></li>
+	<li><a href="FAQS.php">FAQS</a></li>
 </ul>
 
 <ul>
@@ -33,8 +33,8 @@ $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 	<li>Admin
 
 <ul>
-	<li><a href="/jobs/public/admin/jobs.php">Jobs</a></li>
-	<li><a href="/jobs/public/admin/categories.php">Categories</a></li>
+	<li><a href="/admin/jobs.php">Jobs</a></li>
+	<li><a href="/admin/categories.php">Categories</a></li>
 			
 </ul>
 			</li>
