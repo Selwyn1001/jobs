@@ -1,5 +1,8 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/admin/connect.php');
+include($_SERVER['DOCUMENT_ROOT'].'/admin/useradminverify.php');
+include($_SERVER['DOCUMENT_ROOT'].'/admin/isuserallowed.php');
+
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 

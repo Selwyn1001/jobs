@@ -1,7 +1,8 @@
 <?php
-$pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
-session_start();
+include($_SERVER['DOCUMENT_ROOT'].'/admin/connect.php');
+include($_SERVER['DOCUMENT_ROOT'].'/admin/isuserallowed.php');
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -115,15 +116,10 @@ session_start();
 	
 		else {
 			?>
-			<h2>Log in</h2>
-
-			<form action="index.php" method="post">
-				<label>Password</label>
-				<input type="password" name="password" />
-
-				<input type="submit" name="submit" value="Log In" />
-			</form>
+			
 		<?php
+
+		require ("login.php");
 		}
 	?>
 

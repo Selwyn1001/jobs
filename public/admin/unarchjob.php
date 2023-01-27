@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
+include($_SERVER['DOCUMENT_ROOT'].'/admin/connect.php');
 session_start();
 
 

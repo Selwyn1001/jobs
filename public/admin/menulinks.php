@@ -1,7 +1,3 @@
-<?php
-$pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
-?>
-
 <header>
 		<section>
 			<aside>
@@ -18,7 +14,7 @@ $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 
 <ul>
 			
-			<li><a href="index.php">Home</a></li>
+			<li><a href="/admin/index.php">Home</a></li>
 			<li>Jobs
 				<ul>
 					
@@ -42,13 +38,24 @@ $pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
 
 			</ul>
 
+
+			<section class="left">
+
 			<ul>
 
-	<li>Admin
 
-<ul>
-	<li><a href="/admin/jobs.php">Jobs</a></li>
-	<li><a href="/admin/categories.php">Categories</a></li>
+	<li><a href="jobs.php" class="menulink">Jobs</a></li>
+	<li><a href="categories.php" class="menulink">Categories</a></li>
+	<li><a href="users.php" class="menulink">Users</a></li>
 			
 </ul>
+
+			</section>
+			<?php
+			if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+				echo '<p><a href="logout.php" class="btn btn-danger">Log out</a></p>';
+
+			}
+
+			?>
 			</nav>

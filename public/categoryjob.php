@@ -53,12 +53,13 @@
 		<input type = "hidden" name = "id" value = "<?php echo $cat_id; ?>">
 		<label>Location</label>
 		<input type="text" name="location" class="form-control" value="<?php echo $locationSearch; ?>">
-		<input type="submit" class="btn btn-primary" value="Submit">
+		<input type="submit" class="btn btn-primary" value="Search">
 		</form>
 
-		<?php
+		
 
-	$pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
+		<?php
+	include($_SERVER['DOCUMENT_ROOT'].'/admin/connect.php');
 	$q = 'SELECT * FROM job WHERE (dis is NULL or dis = 0) AND closingDate > :date';
 	if ($cat_id>0){
 		$q = $q.' AND categoryid = '.$cat_id;

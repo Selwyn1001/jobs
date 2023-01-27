@@ -1,7 +1,9 @@
 <?php
-$pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
-session_start();
+include($_SERVER['DOCUMENT_ROOT'].'/admin/connect.php');
+include($_SERVER['DOCUMENT_ROOT'].'/admin/useradminverify.php');
+include($_SERVER['DOCUMENT_ROOT'].'/admin/isuserallowed.php');
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,33 +11,11 @@ session_start();
 		<title>Jo's Jobs - Categories</title>
 	</head>
 	<body>
-	<header>
-		<section>
-			<aside>
-				<h3>Office Hours:</h3>
-				<p>Mon-Fri: 09:00-17:30</p>
-				<p>Sat: 09:00-17:00</p>
-				<p>Sun: Closed</p>
-			</aside>
-			<h1>Jo's Jobs</h1>
+	<?php
 
-		</section>
-	</header>
-	<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li>Jobs
-				<ul>
-					<li><a href="/it.php">IT</a></li>
-					<li><a href="/hr.php">Human Resources</a></li>
-					<li><a href="/sales.php">Sales</a></li>
+	require ("menulinks.php");
+	?>
 
-				</ul>
-			</li>
-			<li><a href="/about.html">About Us</a></li>
-		</ul>
-
-	</nav>
 	<img src="/images/randombanner.php"/>
 	<main class="sidebar">
 
@@ -51,7 +31,7 @@ session_start();
 
 	<?php
 
-		if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+		
 		?>
 
 
@@ -84,28 +64,23 @@ session_start();
 			echo '</thead>';
 			echo '</table>';
 
-		}
+		
 
 		else {
 			?>
-			<h2>Log in</h2>
-
-			<form action="index.php" method="post">
-				<label>Password</label>
-				<input type="password" name="password" />
-
-				<input type="submit" name="submit" value="Log In" />
-			</form>
+			
 		<?php
+
+		require ("login.php");
 		}
 	?>
 
 </section>
 	</main>
 
-	<footer>
-		&copy; Jo's Jobs 2017
-	</footer>
+	<?php
+	require ("foot.php");
+	?>
 </body>
 </html>
 

@@ -1,5 +1,7 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/admin/connect.php');
+include($_SERVER['DOCUMENT_ROOT'].'/admin/isuserallowed.php');
+?>
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,33 +10,10 @@ include($_SERVER['DOCUMENT_ROOT'].'/admin/connect.php');
 		<title>Jo's Jobs - Add Job</title>
 	</head>
 	<body>
-	<header>
-		<section>
-			<aside>
-				<h3>Office Hours:</h3>
-				<p>Mon-Fri: 09:00-17:30</p>
-				<p>Sat: 09:00-17:00</p>
-				<p>Sun: Closed</p>
-			</aside>
-			<h1>Jo's Jobs</h1>
+	<?php
+	require ("menulinks.php");
 
-		</section>
-	</header>
-	<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li>Jobs
-				<ul>
-					<li><a href="/it.php">IT</a></li>
-					<li><a href="/hr.php">Human Resources</a></li>
-					<li><a href="/sales.php">Sales</a></li>
-
-				</ul>
-			</li>
-			<li><a href="/about.html">About Us</a></li>
-		</ul>
-
-	</nav>
+	?>
 	<img src="/images/randombanner.php"/>
 	<main class="sidebar">
 
@@ -50,12 +29,12 @@ include($_SERVER['DOCUMENT_ROOT'].'/admin/connect.php');
 
 <?php
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+	if (isset($_POST['submit'])) {
 
-		if (isset($_POST['submit'])) {
+		$loggedinuserid = $_SESSION["id"];
 
-		$stmt = $pdo->prepare('INSERT INTO job (title, description, salary, location, closingDate, categoryId)
-							   VALUES (:title, :description, :salary, :location, :closingDate, :categoryId)');
+		$stmt = $pdo->prepare('INSERT INTO job (title, description, salary, location, closingDate, categoryId, userid)
+							   VALUES (:title, :description, :salary, :location, :closingDate, :categoryId, :userid)');
 
 		$criteria = [
 			'title' => $_POST['title'],
@@ -64,6 +43,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 			'location' => $_POST['location'],
 			'categoryId' => $_POST['categoryId'],
 			'closingDate' => $_POST['closingDate'],
+			'userid' => $loggedinuserid
 		];
 
 		$stmt->execute($criteria);
@@ -120,16 +100,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 else {
 	?>
-	<h2>Log in</h2>
-
-	<form action="index.php" method="post">
-
-		<label>Password</label>
-		<input type="password" name="password" />
-
-		<input type="submit" name="submit" value="Log In" />
-	</form>
+	
 <?php
+
+	require ("login.php");
 }
 
 
@@ -139,9 +113,9 @@ else {
 	</main>
 
 
-	<footer>
-		&copy; Jo's Jobs 2017
-	</footer>
+	<?php
+	require ("foot.php");
+	?>
 </body>
 </html>
 

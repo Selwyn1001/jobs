@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO('mysql:dbname=job;host=mysql', 'student', 'student');
+include($_SERVER['DOCUMENT_ROOT'].'/admin/connect.php');
 session_start();
 ?>
 <!DOCTYPE html>
@@ -39,13 +39,6 @@ session_start();
 	<img src="/images/randombanner.php"/>
 	<main class="sidebar">
 
-	<section class="left">
-		<ul>
-			<li><a href="/jobs/public/admin/jobs.php">Jobs</a></li>
-			<li><a href="/jobs/public/admin/categories.php">Categories</a></li>
-
-		</ul>
-	</section>
 
 	<section class="right">
 
